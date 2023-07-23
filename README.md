@@ -1,1 +1,80 @@
-# ImageReward-Hackathon
+## Reward Feedback Learning (ReFL) for LDMs
+
+> Jiazheng Xu, 2023/07/23
+
+### 代码准备
+
+从/data/jiazheng/ImageReward-Hackathon复制到自己的工作文件夹
+
+### 模型准备
+
+在checkpoint/下复制粘贴以下ckpt：
+
+```
+bert-base-uncased/
+stable-diffusion-v1-4/
+ImageReward.pt
+med_config.json
+```
+
+分别在：
+
+```
+/data/jiazheng/ImageReward-Hackathon/checkpoint/bert-base-uncased/
+/data/jiazheng/ImageReward-Hackathon/checkpoint/stable-diffusion-v1-4/
+/data/jiazheng/ImageReward-Hackathon/checkpoint/ImageReward.pt
+/data/jiazheng/ImageReward-Hackathon/checkpoint/med_config.json
+```
+
+### 环境配置
+
+```shell
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+pip install -r requirements_refl.txt
+pip install tensorboard
+```
+
+### 伪代码
+
+![WechatIMG4473 copy.png](https://s2.loli.net/2023/07/23/fvzsHeh2r8ZDSC1.png)
+
+### 参考代码
+
+```shell
+ImageReward-Hackathon/reference/pipeline_stable_diffusion.py: L665~L779
+ImageReward-Hackathon/reference/scheduling_ddpm.py: L384~L452
+```
+
+### 待填补代码
+
+* 搜索：TODO
+
+```shell
+ImageReward-Hackathon/ImageReward/ReFL_lora.py
+```
+
+* 结果保存在：ImageReward-Hackathon/checkpoint/refl_lora
+
+* 定性观察ReFL后的结果：
+
+  ```bash
+  python inference_lora.py 
+  ```
+
+  * 和ReFL之前做对比：
+
+    ```bash
+    python inference.py
+    ```
+
+* 调参：train_refl_lora.sh
+
+  ```shell
+  --learning_rate=1e-04 \
+  --grad_scale 0.01 \
+  ```
+
+### 注意事项
+
+1. 为了和他人共用机器，需要错开使用不同的GPU，例如在`ReFL.py`的`import os`后紧跟一行`os.environ['CUDA_VISIBLE_DEVICES'] = '6,7'`（其中6,7可以是0-7中任意2个数，代表GPU编号，注意和他人不冲突）。本次ReFL需要使用2张卡训练。
+
