@@ -78,4 +78,5 @@ ImageReward-Hackathon/ImageReward/ReFL_lora.py
 
 1. 为了和他人共用机器，需要错开使用不同的GPU，例如在`ReFL.py`的`import os`后紧跟一行`os.environ['CUDA_VISIBLE_DEVICES'] = '6,7'`（其中6,7可以是0-7中任意2个数，代表GPU编号，注意和他人不冲突）。本次ReFL需要使用2张卡训练。
 2. 部分同学如果直接运行脚本可能会遇到端口号被占的报错，这是因为Accelerate默认端口号已经被其他同学占用，可以查阅`https://huggingface.co/docs/accelerate/package_reference/cli`官网，具体来说，【在`train_refl_lora.sh`第一行`accelerate launch`加上`--main_process_port 新的端口号`】即可。如果想要加深理解，可以自行Google，其定义为The port to use to communicate with the machine of rank 0.
+3. 有同学遇到设置了os.environ['CUDA_VISIBLE_DEVICES']还是使用默认卡的情况，这可能是因为在os设置卡号之前Accelerate就使用到了GPU（可能是其内部实现用了什么feature），这时最简单的方法之一就是在代码最开始的地方，也即refl_lora.py的第一行import os并设置os.environ['CUDA_VISIBLE_DEVICES']。
 
