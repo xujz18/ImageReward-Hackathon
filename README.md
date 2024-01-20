@@ -85,5 +85,5 @@ ImageReward-Hackathon/ImageReward/ReFL_lora.py
 ### 知识补充：
 有同学问DDPM是啥，这来源于一篇paper：Denoising Diffusion Probabilistic Model(DDPM)，我们用的diffusers的reference中scheduling_ddpm代码就是DDPM作为schedule。
 扩展阅读可以搜索DDPM+知乎：https://zhuanlan.zhihu.com/p/384144179；https://zhuanlan.zhihu.com/p/563661713
-有个老外的博客讲Diffusion也不错：https://lilianweng.github.io/posts/2021-07-11-diffusion-models/
+有个博客讲Diffusion也不错：https://lilianweng.github.io/posts/2021-07-11-diffusion-models/
 
