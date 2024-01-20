@@ -2,10 +2,6 @@
 
 > Jiazheng Xu, 2023/07/23
 
-### 代码准备
-
-从/data/jiazheng/ImageReward-Hackathon复制到自己的工作文件夹
-
 ### 模型准备
 
 在checkpoint/下复制粘贴以下ckpt：
@@ -17,14 +13,7 @@ ImageReward.pt
 med_config.json
 ```
 
-分别在：
-
-```
-/data/jiazheng/ImageReward-Hackathon/checkpoint/bert-base-uncased/
-/data/jiazheng/ImageReward-Hackathon/checkpoint/stable-diffusion-v1-4/
-/data/jiazheng/ImageReward-Hackathon/checkpoint/ImageReward.pt
-/data/jiazheng/ImageReward-Hackathon/checkpoint/med_config.json
-```
+都可以在ImageReward原Repo找到
 
 ### 环境配置
 
